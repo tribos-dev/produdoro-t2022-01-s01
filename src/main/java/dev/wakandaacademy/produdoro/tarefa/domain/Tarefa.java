@@ -27,6 +27,8 @@ public class Tarefa {
 	private UUID idArea;
 	@Indexed
 	private UUID idProjeto;
+	@Indexed
+	private StatusAtivacaoTarefa statusAtivacaoTarefa;
 	@Builder.Default
 	private StatusTarefa status = StatusTarefa.A_FAZER;
 	
