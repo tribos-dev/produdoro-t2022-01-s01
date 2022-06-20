@@ -5,6 +5,7 @@ import javax.validation.Valid;
 import org.springframework.web.bind.annotation.RestController;
 
 import dev.wakandaacademy.produdoro.tarefa.application.service.TarefaService;
+import dev.wakandaacademy.produdoro.tarefa.domain.Tarefa;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
@@ -15,8 +16,8 @@ public class TarefaRestController implements TarefaAPI {
 
 	@Override
 	public TarefaDTO adicionaTarefa(@Valid TarefaFORM tarefaFORM) {
-		TarefaDTO novaTarefa = tarefaService.adicionaTarefa(tarefaFORM.toEntity());
-		return novaTarefa;
+		Tarefa novaTarefa = tarefaService.adicionaTarefa(tarefaFORM.toEntity());
+		return new TarefaDTO(novaTarefa);
 	}
 
 }
