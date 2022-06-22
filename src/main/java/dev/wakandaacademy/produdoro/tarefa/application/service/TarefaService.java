@@ -5,10 +5,15 @@ import java.util.UUID;
 
 import javax.validation.Valid;
 
+import org.springframework.stereotype.Service;
+
 import dev.wakandaacademy.produdoro.tarefa.domain.Tarefa;
 
+@Service
 public class TarefaService implements TarefaApplicationService {
 
-	List<Tarefa> buscaTarefaPorIdUsuario(@Valid UUID idUsuario);
+	public List<Tarefa> buscaTarefaPorIdUsuario(@Valid UUID idUsuario) {
+		return null;
+	}
 
 }

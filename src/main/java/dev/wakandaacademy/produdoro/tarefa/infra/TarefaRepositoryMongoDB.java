@@ -7,10 +7,10 @@ import dev.wakandaacademy.produdoro.tarefa.application.repository.TarefaReposito
 import dev.wakandaacademy.produdoro.tarefa.domain.Tarefa;
 
 public class TarefaRepositoryMongoDB implements TarefaRepository {
+	private TarefaMongoDBSpringRepository tarefaMongoDBSpringRepository;
 
 	public List<Tarefa> buscaTarefaPorIdUsuario(UUID IdUsuario) {
 		List<Tarefa> listaTarefas = tarefaMongoDBSpringRepository.findAllByIdUsuario(IdUsuario);
 		return listaTarefas;
 	}
-
 }
