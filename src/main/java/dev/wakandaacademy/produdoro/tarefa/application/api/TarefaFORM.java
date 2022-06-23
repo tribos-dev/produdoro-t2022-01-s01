@@ -5,7 +5,6 @@ import java.util.UUID;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
-
 import dev.wakandaacademy.produdoro.tarefa.domain.StatusTarefa;
 import dev.wakandaacademy.produdoro.tarefa.domain.Tarefa;
 import lombok.Builder;
@@ -16,7 +15,6 @@ import lombok.Setter;
 @Setter
 @Builder
 public class TarefaFORM {
-	
 	@NotEmpty(message = " O campo descrição da tarefa não pode estar vazio")
 	@Size(min = 3, max = 255)
 	private String descricao;
@@ -37,5 +35,4 @@ public class TarefaFORM {
 				.contagemPomodoro(contagemPomodoro)
 				.build();
 	}
-
 }
