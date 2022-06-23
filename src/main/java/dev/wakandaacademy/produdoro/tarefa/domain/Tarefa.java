@@ -18,8 +18,10 @@ import lombok.NoArgsConstructor;
 @Getter
 @Document(collection = "Tarefa")
 public class Tarefa {
+	
 	@Id
-	private UUID idTarefa;
+	@Builder.Default
+	private UUID idTarefa = UUID.randomUUID();
 	private String descricao;
 	@Indexed
 	private UUID idUsuario;
