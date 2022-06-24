@@ -8,6 +8,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+
 @Builder
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
@@ -27,9 +28,8 @@ public class Tarefa {
 	private StatusAtivacaoTarefa statusAtivacao = StatusAtivacaoTarefa.INATIVA;
 	@Builder.Default
 	private StatusTarefa status = StatusTarefa.A_FAZER;
-	
-	
-	public void ativaTarefa(Tarefa tarefa) {
-		this.statusAtivacao = tarefa.statusAtivacao.ATIVA;
+
+	public void ativa() {
+		this.statusAtivacao = StatusAtivacaoTarefa.ATIVA;
 	}
 }
