@@ -11,4 +11,5 @@ public interface TarefaAPI {
 	@PatchMapping("/{idTarefa}/status")
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
 	public void defineTarefaAtiva(@PathVariable UUID idTarefa, @RequestParam UUID idUsuario);
+	
 }

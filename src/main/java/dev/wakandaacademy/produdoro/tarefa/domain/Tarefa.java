@@ -27,4 +27,9 @@ public class Tarefa {
 	private StatusAtivacaoTarefa statusAtivacao = StatusAtivacaoTarefa.INATIVA;
 	@Builder.Default
 	private StatusTarefa status = StatusTarefa.A_FAZER;
+	
+	
+	public void ativaTarefa(Tarefa tarefa) {
+		this.statusAtivacao = tarefa.statusAtivacao.ATIVA;
+	}
 }
