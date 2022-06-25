@@ -1,13 +1,11 @@
 package dev.wakandaacademy.produdoro.tarefa.infra;
 import java.util.Optional;
 import java.util.UUID;
-
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Repository;
-
 import dev.wakandaacademy.produdoro.tarefa.application.repository.TarefaRepository;
 import dev.wakandaacademy.produdoro.tarefa.domain.Tarefa;
 import lombok.AllArgsConstructor;
@@ -42,6 +40,4 @@ public class TarefaRepositoryMongoDB  implements TarefaRepository{
 		repository.save(tarefa);
 		log.info("[finish] TarefaRepositoryMongoDB - salva ");
 	}
-
-
 }

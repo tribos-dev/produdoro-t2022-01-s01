@@ -1,11 +1,7 @@
 package dev.wakandaacademy.produdoro.tarefa.application.service;
 import java.util.UUID;
-
-import javax.validation.Valid;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-
 import dev.wakandaacademy.produdoro.handler.APIException;
 import dev.wakandaacademy.produdoro.tarefa.application.repository.TarefaRepository;
 import dev.wakandaacademy.produdoro.tarefa.domain.Tarefa;
@@ -18,25 +14,26 @@ public class TarefaService implements TarefaApplicationService {
 	private TarefaRepository tarefaRepository;
 
 	public void ativaTarefa(UUID idTarefa, UUID idUsuario) {
-		log.info("[start] TarefaSpringMongoDBService - ativaTarefa");
+		log.info("[start] TarefaService - ativaTarefa");
 		tarefaRepository.desativaTarefas(idUsuario);
 		Tarefa tarefaPorId = tarefaRepository.buscaTarefaPorId(idTarefa)
 				.orElseThrow(() -> APIException.build(HttpStatus.NOT_FOUND, "Tarefa não encontrada!"));
 		tarefaPorId.ativa();
 		tarefaRepository.salva(tarefaPorId);
-		log.info("[finish] TarefaSpringMongoDBService - ativaTarefa");
+		log.info("[finish] TarefaService - ativaTarefa");
 	}
-	
 	@Override
-	public void salvaTarefa(@Valid Tarefa tarefa) {
-		// TODO Auto-generated method stub
-		
+	public void salvaTarefa(Tarefa tarefa) {
+		log.info("[start] TarefaService - salvaTarefa");
+		tarefaRepository.salva(tarefa);
+		log.info("[finish] TarefaService - salvaTarefa");
 	}
-
 	@Override
 	public Tarefa buscaTarefaPoridTarefa(UUID idTarefa) {
-		// TODO Auto-generated method stub
-		return null;
+		log.info("[start] TarefaService - buscaTarefaPoridTarefa");
+		Tarefa buscaTarefa = tarefaRepository.buscaTarefaPorId(idTarefa)
+				.orElseThrow(() -> APIException.build(HttpStatus.NOT_FOUND, "Tarefa não encontrada!"));
+		log.info("[finish] TarefaService - buscaTarefaPoridTarefa");
+		return buscaTarefa;
 	}
-	
 }	

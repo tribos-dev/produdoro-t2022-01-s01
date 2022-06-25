@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
-@RequestMapping("/tarefas")
+@RequestMapping("/v1/tarefa")
 public interface TarefaAPI {
 	@PatchMapping("/{idTarefa}/status")
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
