@@ -1,10 +1,11 @@
 package dev.wakandaacademy.produdoro.tarefa.infra;
 
-import java.util.Optional;
 import java.util.UUID;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Repository;
 
+import dev.wakandaacademy.produdoro.handler.APIException;
 import dev.wakandaacademy.produdoro.tarefa.application.repository.TarefaRepository;
 import dev.wakandaacademy.produdoro.tarefa.domain.Tarefa;
 import lombok.AllArgsConstructor;
@@ -25,10 +26,11 @@ public class TarefaRepositoryMongoDB implements TarefaRepository {
 	}
 
 	@Override
-	public Optional<Tarefa> buscaTarefaPorIdTarefa(UUID idTarefa) {
-		log.info("[inicia] TarefaRepositoryMongoDB - detalhaTarefa");
-		Optional<Tarefa> tarefa = tarefaMongoDBSpringRepository.findByIdTarefa(idTarefa);
-		log.info("[finaliza] TarefaRepositoryMongoDB - detalhaTarefa");
+	public Tarefa buscaTarefaPorId(UUID idTarefa) {
+		log.info("[inicia] TarefaRepositoryMongoDB - buscaTarefaPorIdTarefa");
+		Tarefa tarefa = tarefaMongoDBSpringRepository.findById(idTarefa)
+				.orElseThrow(() -> APIException.build(HttpStatus.NOT_FOUND, "Tarefa não encontrada!"));
+		log.info("[finaliza] TarefaRepositoryMongoDB - buscaTarefaPorIdTarefa");
 		return tarefa;
 	}
 }

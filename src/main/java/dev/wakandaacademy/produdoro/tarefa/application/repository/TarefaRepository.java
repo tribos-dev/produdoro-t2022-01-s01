@@ -1,6 +1,5 @@
 package dev.wakandaacademy.produdoro.tarefa.application.repository;
 
-import java.util.Optional;
 import java.util.UUID;
 
 import org.springframework.stereotype.Repository;
@@ -11,5 +10,5 @@ public interface TarefaRepository {
 	
 	Tarefa salva(Tarefa tarefa);
 
-	Optional<Tarefa> buscaTarefaPorIdTarefa(UUID idTarefa);
+	Tarefa buscaTarefaPorId(UUID idTarefa);
 }
