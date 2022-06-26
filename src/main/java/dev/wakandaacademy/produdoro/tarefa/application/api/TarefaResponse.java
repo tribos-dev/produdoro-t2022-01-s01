@@ -6,7 +6,7 @@ import dev.wakandaacademy.produdoro.tarefa.domain.Tarefa;
 import lombok.Getter;
 
 @Getter
-public class TarefaDTO {
+public class TarefaResponse {
 	private UUID idTarefa;
 	private String descricao;
 	private UUID idUsuario;
@@ -15,7 +15,7 @@ public class TarefaDTO {
 	private StatusTarefa status;
 	private int contagemPomodoro;
 	
-	public TarefaDTO(Tarefa tarefa) {
+	public TarefaResponse(Tarefa tarefa) {
 		this.idTarefa = tarefa.getIdTarefa();
 		this.descricao = tarefa.getDescricao();
 		this.idUsuario = tarefa.getIdUsuario();

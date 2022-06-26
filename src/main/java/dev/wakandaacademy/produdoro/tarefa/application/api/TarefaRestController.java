@@ -14,10 +14,10 @@ public class TarefaRestController implements TarefaAPI {
 	private TarefaApplicationService tarefaApplicationService;
 
 	@Override
-	public TarefaDTO adicionaTarefa(@Valid TarefaFORM tarefaFORM) {
+	public TarefaResponse adicionaTarefa(@Valid TarefaRequest tarefaRequest) {
 		log.info("[inicia] TarefaRestController - adicionaTarefa");
-		Tarefa novaTarefa = tarefaApplicationService.adicionaTarefa(tarefaFORM.toEntity());
+		Tarefa novaTarefa = tarefaApplicationService.adicionaTarefa(tarefaRequest.toEntity());
 		log.info("[finaliza] TarefaRestController - adicionaTarefa");
-		return new TarefaDTO(novaTarefa);
+		return new TarefaResponse(novaTarefa);
 	}
 }

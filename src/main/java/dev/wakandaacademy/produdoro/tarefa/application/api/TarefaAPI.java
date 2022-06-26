@@ -14,5 +14,5 @@ public interface TarefaAPI {
 	
 	@PostMapping
 	@ResponseStatus(code = HttpStatus.CREATED)
-	TarefaDTO adicionaTarefa (@RequestBody @Valid TarefaFORM tarefaFORM);
+	TarefaResponse adicionaTarefa (@RequestBody @Valid TarefaRequest tarefaRequest);
 }
