@@ -29,5 +29,6 @@ public class Tarefa {
 	private UUID idProjeto;
 	@Builder.Default
 	private StatusTarefa status = StatusTarefa.A_FAZER;
-	
+	@Builder.Default
+	private int contagemPomodoro = 0;
 }

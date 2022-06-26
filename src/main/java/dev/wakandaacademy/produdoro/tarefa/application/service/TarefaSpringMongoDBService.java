@@ -13,18 +13,16 @@ import lombok.Setter;
 import lombok.extern.log4j.Log4j2;
 
 @AllArgsConstructor
-@Getter
-@Setter
 @Log4j2
 @Service
 public class TarefaSpringMongoDBService implements TarefaService {
 	private TarefaRepository tarefaRepository;
 
 	@Override
-	public List<Tarefa> buscaTarefaPorIdUsuario(UUID idUsuario) {
-		log.info("[start] TarefaSpringMongoDBService - buscaTodasAsTarefasPorIdUsuario");
-		List<Tarefa> listaDeTarefa = tarefaRepository.buscaTarefaPorIdUsuario(idUsuario);
-		log.info("[finish] TarefaSpringMongoDBService - buscaTodasAsTarefasPorIdUsuario");
+	public List<Tarefa> buscarTarefaPorIdUsuario(UUID idUsuario) {
+		log.info("[start] TarefaSpringMongoDBService - buscarTodasAsTarefasPorIdUsuario");
+		List<Tarefa> listaDeTarefa = tarefaRepository.buscarTarefaPorIdUsuario(idUsuario);
+		log.info("[finish] TarefaSpringMongoDBService - buscarTodasAsTarefasPorIdUsuario");
 		return listaDeTarefa;
 	}
 }

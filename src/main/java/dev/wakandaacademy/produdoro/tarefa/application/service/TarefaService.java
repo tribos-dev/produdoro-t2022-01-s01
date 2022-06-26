@@ -12,6 +12,6 @@ import dev.wakandaacademy.produdoro.tarefa.domain.Tarefa;
 @Service
 public interface TarefaService {
 
-	List<Tarefa> buscaTarefaPorIdUsuario(@Valid UUID idUsuario);
+	List<Tarefa> buscarTarefaPorIdUsuario(@Valid UUID idUsuario);
 
 }
