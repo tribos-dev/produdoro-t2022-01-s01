@@ -19,7 +19,7 @@ public class TarefaRestController implements TarefaAPI {
 	@Override
 	public List<TarefaDTO> listaTarefasPorIdUsuario(UUID idUsuario) {
 		log.info("[start] TarefaRestController - listaTarefasPorIdUsuario");
-		List<Tarefa> listaTarefa = tarefaService.buscarTarefaPorIdUsuario(idUsuario);
+		List<Tarefa> listaTarefa = tarefaService.buscarTarefasPorIdUsuario(idUsuario);
 		log.info("[finish] TarefaRestController - listaTarefasPorIdUsuario");
 		return TarefaDTO.parseListDTO(listaTarefa);
 	}
