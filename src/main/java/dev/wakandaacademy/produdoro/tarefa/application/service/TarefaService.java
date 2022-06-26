@@ -10,10 +10,8 @@ import org.springframework.stereotype.Service;
 import dev.wakandaacademy.produdoro.tarefa.domain.Tarefa;
 
 @Service
-public class TarefaService implements TarefaApplicationService {
+public interface TarefaService {
 
-	public List<Tarefa> buscaTarefaPorIdUsuario(@Valid UUID idUsuario) {
-		return null;
-	}
+	List<Tarefa> buscaTarefaPorIdUsuario(@Valid UUID idUsuario);
 
 }
