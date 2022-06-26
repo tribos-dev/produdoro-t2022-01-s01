@@ -1,15 +1,15 @@
 package dev.wakandaacademy.produdoro.tarefa.application.api;
 import java.util.UUID;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
-@RequestMapping("/v1/tarefa")
+@RequestMapping("/v1/tarefas")
 public interface TarefaAPI {
-	@PatchMapping("/{idTarefa}/status")
-	@ResponseStatus(code = HttpStatus.NO_CONTENT)
+	@PostMapping("/tarefa/{idTarefa}/ativacao")
+	@ResponseStatus(code = HttpStatus.CREATED)
 	public void defineTarefaAtiva(@PathVariable UUID idTarefa, @RequestParam UUID idUsuario);
 	
 }

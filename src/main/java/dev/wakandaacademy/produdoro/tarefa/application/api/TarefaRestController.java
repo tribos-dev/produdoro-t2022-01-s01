@@ -14,8 +14,6 @@ public class TarefaRestController implements TarefaAPI {
 	public void defineTarefaAtiva(UUID idTarefa, UUID idUsuario) {
 		log.info("[start] TarefaRestController - defineTarefaAtiva");
 		tarefaService.ativaTarefa(idTarefa, idUsuario);
-		System.out.println("tarefa: "+idTarefa);
-		System.out.println("usuario: "+idUsuario);
 		log.info("[finish] TarefaRestController - defineTarefaAtiva");
 	}
 }
