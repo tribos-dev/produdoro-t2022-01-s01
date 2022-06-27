@@ -27,10 +27,10 @@ public class TarefaRepositoryMongoDB implements TarefaRepository {
 
 	@Override
 	public Tarefa buscaTarefaPorId(UUID idTarefa) {
-		log.info("[inicia] TarefaRepositoryMongoDB - buscaTarefaPorIdTarefa");
+		log.info("[inicia] TarefaRepositoryMongoDB - buscaTarefaPorId");
 		Tarefa tarefa = tarefaMongoDBSpringRepository.findById(idTarefa)
 				.orElseThrow(() -> APIException.build(HttpStatus.NOT_FOUND, "Tarefa não encontrada!"));
-		log.info("[finaliza] TarefaRepositoryMongoDB - buscaTarefaPorIdTarefa");
+		log.info("[finaliza] TarefaRepositoryMongoDB - buscaTarefaPorId");
 		return tarefa;
 	}
 }
