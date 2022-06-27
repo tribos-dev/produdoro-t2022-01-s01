@@ -8,8 +8,6 @@ import dev.wakandaacademy.produdoro.tarefa.domain.Tarefa;
 
 @Service
 public interface TarefaApplicationService {
-
 	Tarefa adicionaTarefa(Tarefa tarefa);
-
 	Tarefa detalhaTarefa(UUID idTarefa);
 }

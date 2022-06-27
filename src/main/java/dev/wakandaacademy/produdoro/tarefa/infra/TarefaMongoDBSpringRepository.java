@@ -8,6 +8,5 @@ import dev.wakandaacademy.produdoro.tarefa.domain.Tarefa;
 
 @Repository
 public interface TarefaMongoDBSpringRepository extends MongoRepository<Tarefa, UUID>{
-
 	Optional<Tarefa> findById(UUID idTarefa);
 }
