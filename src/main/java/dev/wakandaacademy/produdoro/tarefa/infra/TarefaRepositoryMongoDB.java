@@ -14,7 +14,7 @@ import lombok.extern.log4j.Log4j2;
 @Log4j2
 @Repository
 public class TarefaRepositoryMongoDB  implements TarefaRepository{
-    private TarefaMongoDBSpringRepository repository;
+    private TarefaMongoDBSpringRepository tarefaMongoDBSpringRepository;
     private MongoTemplate mongoTemplate;
     
 	@Override
@@ -22,6 +22,7 @@ public class TarefaRepositoryMongoDB  implements TarefaRepository{
 		log.info("[start] TarefaRepositoryMongoDB - desativaTarefas");
 		Query query = new Query();
 		query.addCriteria(Criteria.where("idUsuario").is(idUsuario));
+		
 		Update update = new Update();
 		update.set("statusAtivacao", "INATIVA");
 		mongoTemplate.updateMulti(query, update, Tarefa.class);
@@ -30,14 +31,15 @@ public class TarefaRepositoryMongoDB  implements TarefaRepository{
 	@Override
 	public Optional<Tarefa> buscaTarefaPorId(UUID idTarefa) {
 		log.info("[start] TarefaRepositoryMongoDB - buscaTarefaPorId");
-		Optional<Tarefa> tarefaPorId = repository.findByIdTarefa(idTarefa);
+		Optional<Tarefa> tarefaPorId = tarefaMongoDBSpringRepository.findByIdTarefa(idTarefa);
 		log.info("[finish] TarefaRepositoryMongoDB - buscaTarefaPorId");
 		return tarefaPorId;
 	}
 	@Override
-	public void salva(Tarefa tarefa) {
-		log.info("[start] TarefaRepositoryMongoDB - salva ");
-		repository.save(tarefa);
-		log.info("[finish] TarefaRepositoryMongoDB - salva ");
+	public Tarefa salva(Tarefa tarefa) {
+		log.info("[inicia] TarefaRepositoryMongoDB - salva");
+		Tarefa tarefaSalva = tarefaMongoDBSpringRepository.save(tarefa);
+		log.info("[finaliza] TarefaRepositoryMongoDB - salva");
+		return tarefaSalva;
 	}
 }

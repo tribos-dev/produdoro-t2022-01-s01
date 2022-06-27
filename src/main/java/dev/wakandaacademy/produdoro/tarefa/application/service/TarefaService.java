@@ -23,12 +23,6 @@ public class TarefaService implements TarefaApplicationService {
 		log.info("[finish] TarefaService - ativaTarefa");
 	}
 	@Override
-	public void salvaTarefa(Tarefa tarefa) {
-		log.info("[start] TarefaService - salvaTarefa");
-		tarefaRepository.salva(tarefa);
-		log.info("[finish] TarefaService - salvaTarefa");
-	}
-	@Override
 	public Tarefa buscaTarefaPoridTarefa(UUID idTarefa) {
 		log.info("[start] TarefaService - buscaTarefaPoridTarefa");
 		Tarefa buscaTarefa = tarefaRepository.buscaTarefaPorId(idTarefa)
@@ -36,4 +30,11 @@ public class TarefaService implements TarefaApplicationService {
 		log.info("[finish] TarefaService - buscaTarefaPoridTarefa");
 		return buscaTarefa;
 	}
-}	
+	public Tarefa adicionaTarefa(Tarefa tarefa) {
+		log.info("[inicia] TarefaService - adicionaTarefa");
+		Tarefa salvaTarefa = tarefaRepository.salva(tarefa);
+		log.info("[finaliza] TarefaService - adicionaTarefa");
+		return salvaTarefa;
+	}
+}
+

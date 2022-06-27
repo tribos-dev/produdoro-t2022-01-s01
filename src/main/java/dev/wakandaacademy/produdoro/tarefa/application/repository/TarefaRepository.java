@@ -5,5 +5,6 @@ import dev.wakandaacademy.produdoro.tarefa.domain.Tarefa;
 public interface TarefaRepository {
 	Optional<Tarefa> buscaTarefaPorId(UUID idTarefa);
 	void desativaTarefas(UUID idUsuario);
-	void salva(Tarefa tarefaPorId);
+	Tarefa salva(Tarefa tarefa);
 }
+
