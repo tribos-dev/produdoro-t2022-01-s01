@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 public interface TarefaAPI {
 	@PostMapping("/tarefa/{idTarefa}/ativacao")
 	@ResponseStatus(code = HttpStatus.CREATED)
-	public void defineTarefaAtiva(@PathVariable UUID idTarefa, @RequestParam UUID idUsuario);
+	public void defineTarefaAtiva(@RequestParam UUID idUsuario, @PathVariable UUID idTarefa);
 	@PostMapping
 	@ResponseStatus(code = HttpStatus.CREATED)
 	TarefaResponse adicionaTarefa (@RequestBody @Valid TarefaRequest tarefaRequest);

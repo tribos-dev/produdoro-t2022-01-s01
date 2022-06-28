@@ -13,9 +13,9 @@ public class TarefaRestController implements TarefaAPI {
 	private TarefaApplicationService tarefaApplicationService;
 
 	@Override
-	public void defineTarefaAtiva(UUID idTarefa, UUID idUsuario) {
+	public void defineTarefaAtiva(UUID idUsuario, UUID idTarefa) {
 		log.info("[start] TarefaRestController - defineTarefaAtiva");
-		tarefaApplicationService.ativaTarefa(idTarefa, idUsuario);
+		tarefaApplicationService.ativaTarefa(idUsuario, idTarefa);
 		log.info("[finish] TarefaRestController - defineTarefaAtiva");
 	}
 	@Override

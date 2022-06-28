@@ -13,7 +13,7 @@ import lombok.extern.log4j.Log4j2;
 public class TarefaService implements TarefaApplicationService {
 	private TarefaRepository tarefaRepository;
 
-	public void ativaTarefa(UUID idTarefa, UUID idUsuario) {
+	public void ativaTarefa(UUID idUsuario, UUID idTarefa) {
 		log.info("[start] TarefaService - ativaTarefa");
 		tarefaRepository.desativaTarefas(idUsuario);
 		Tarefa tarefaPorId = tarefaRepository.buscaTarefaPorId(idTarefa)
