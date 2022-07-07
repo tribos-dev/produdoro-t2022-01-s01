@@ -1,10 +1,10 @@
 package dev.wakandaacademy.produdoro.tarefa.application.repository;
-
-import org.springframework.stereotype.Repository;
+import java.util.Optional;
+import java.util.UUID;
 import dev.wakandaacademy.produdoro.tarefa.domain.Tarefa;
-
-@Repository
 public interface TarefaRepository {
-	
+	Optional<Tarefa> buscaTarefaPorId(UUID idTarefa);
+	void desativaTarefas(UUID idUsuario);
 	Tarefa salva(Tarefa tarefa);
 }
+
