@@ -3,6 +3,7 @@ package dev.wakandaacademy.produdoro.tarefa.application.service;
 import dev.wakandaacademy.produdoro.tarefa.domain.Tarefa;
 
 import javax.validation.Valid;
+import java.util.List;
 import java.util.UUID;
 
 public interface TarefaApplicationService {
@@ -15,5 +16,8 @@ public interface TarefaApplicationService {
     Tarefa adicionaTarefa(Tarefa tarefa);
 
     Tarefa detalhaTarefa(UUID idTarefa);
+
+    List<Tarefa> buscarTarefasPorIdUsuario(@Valid UUID idUsuario);
+
 }
 

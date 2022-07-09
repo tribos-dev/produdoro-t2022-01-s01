@@ -10,6 +10,7 @@ import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -52,4 +53,12 @@ public class TarefaRepositoryMongoDB  implements TarefaRepository{
 	public void deleteById(Tarefa tarefaPorId) {
 		tarefaMongoDBSpringRepository.delete(tarefaPorId);
 	}
+
+    @Override
+    public List<Tarefa> buscarTarefasPorIdUsuario(UUID IdUsuario) {
+        log.info("[start] TarefaRepositoryMongoDB - buscarTarefasPorIdUsuario ");
+        List<Tarefa> listaTarefas = tarefaMongoDBSpringRepository.findAllByIdUsuario(IdUsuario);
+        log.info("[finish] TarefaRepositoryMongoDB - buscarTarefasPorIdUsuario ");
+        return listaTarefas;
+    }
 }

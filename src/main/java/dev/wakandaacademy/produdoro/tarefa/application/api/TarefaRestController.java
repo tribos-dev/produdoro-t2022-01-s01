@@ -7,6 +7,7 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
+import java.util.List;
 import java.util.UUID;
 
 @Log4j2
@@ -43,5 +44,13 @@ public class TarefaRestController implements TarefaAPI {
         Tarefa tarefa = tarefaApplicationService.detalhaTarefa(idTarefa);
         log.info("[finaliza] TarefaRestController - detalhaTarefa");
         return new TarefaResponse(tarefa);
+    }
+
+    @Override
+    public List<TarefaDTO> listaTarefasPorIdUsuario(UUID idUsuario) {
+        log.info("[start] TarefaRestController - listaTarefasPorIdUsuario");
+        List<Tarefa> listaTarefa = tarefaApplicationService.buscarTarefasPorIdUsuario(idUsuario);
+        log.info("[finish] TarefaRestController - listaTarefasPorIdUsuario");
+        return TarefaDTO.parseListDTO(listaTarefa);
     }
 }
