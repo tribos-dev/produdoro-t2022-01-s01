@@ -1,15 +1,20 @@
 package dev.wakandaacademy.produdoro.tarefa.infra;
 
-import java.util.List;
-import java.util.UUID;
-
-import javax.validation.Valid;
-
+import dev.wakandaacademy.produdoro.tarefa.domain.Tarefa;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
-import dev.wakandaacademy.produdoro.tarefa.domain.Tarefa;
+import javax.validation.Valid;
+import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 public interface TarefaMongoDBSpringRepository extends MongoRepository<Tarefa, UUID> {
+    Optional<Tarefa> findByIdTarefa(UUID idTarefa);
 
-	List<Tarefa> findAllByIdUsuario(@Valid UUID idUsuario);
+    void delete(Tarefa tarefaPorId);
+
+    Optional<Tarefa> findById(UUID idTarefa);
+
+    List<Tarefa> findAllByIdUsuario(UUID idUsuario);
+
 }

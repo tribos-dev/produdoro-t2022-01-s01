@@ -1,19 +1,32 @@
 package dev.wakandaacademy.produdoro.tarefa.application.api;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 import java.util.List;
 import java.util.UUID;
-
-import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseStatus;
 
 @RequestMapping("/v1/tarefas")
 public interface TarefaAPI {
 
-	@GetMapping("/{idUsuario}")
+    @PostMapping("/tarefa/{idTarefa}/ativacao")
+    @ResponseStatus(code = HttpStatus.CREATED)
+    void defineTarefaAtiva(@RequestParam UUID idUsuario, @PathVariable UUID idTarefa);
+
+    @PostMapping
+    @ResponseStatus(code = HttpStatus.CREATED)
+    TarefaResponse adicionaTarefa(@RequestBody @Valid TarefaRequest tarefaRequest);
+
+    @DeleteMapping("/{idTarefa}")
+    @ResponseStatus(code = HttpStatus.NO_CONTENT)
+    void deletaTarefa(@PathVariable UUID idTarefa);
+
+	@GetMapping("/{idTarefa}")
 	@ResponseStatus(code = HttpStatus.OK)
-	List<TarefaDTO> listaTarefasPorIdUsuario(@PathVariable UUID idUsuario);
+	TarefaResponse detalhaTarefa(@PathVariable UUID idTarefa);
+
+    @ResponseStatus(code = HttpStatus.OK)
+    List<TarefaDTO> listaTarefasPorIdUsuario(@PathVariable UUID idUsuario);
 
 }
