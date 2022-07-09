@@ -1,21 +1,44 @@
 package dev.wakandaacademy.produdoro.tarefa.infra;
 
-import java.util.UUID;
-
-import org.springframework.http.HttpStatus;
-import org.springframework.stereotype.Repository;
-
-import dev.wakandaacademy.produdoro.handler.APIException;
 import dev.wakandaacademy.produdoro.tarefa.application.repository.TarefaRepository;
 import dev.wakandaacademy.produdoro.tarefa.domain.Tarefa;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.data.mongodb.core.query.Update;
+import org.springframework.stereotype.Repository;
+
+import java.util.Optional;
+import java.util.UUID;
 
 @Log4j2
 @AllArgsConstructor
 @Repository
-public class TarefaRepositoryMongoDB implements TarefaRepository {
-	private TarefaMongoDBSpringRepository tarefaMongoDBSpringRepository;
+public class TarefaRepositoryMongoDB  implements TarefaRepository{
+    private TarefaMongoDBSpringRepository tarefaMongoDBSpringRepository;
+    private MongoTemplate mongoTemplate;
+
+	@Override
+	public void desativaTarefas(UUID idUsuario) {
+		log.info("[start] TarefaRepositoryMongoDB - desativaTarefas");
+		Query query = new Query();
+		query.addCriteria(Criteria.where("idUsuario").is(idUsuario));
+
+		Update update = new Update();
+		update.set("statusAtivacao", "INATIVA");
+		mongoTemplate.updateMulti(query, update, Tarefa.class);
+		log.info("[finish] TarefaRepositoryMongoDB - desativaTarefas");
+	}
+
+	@Override
+	public Optional<Tarefa> buscaTarefaPorId(UUID idTarefa) {
+		log.info("[start] TarefaRepositoryMongoDB - buscaTarefaPorId");
+		Optional<Tarefa> tarefaPorId = tarefaMongoDBSpringRepository.findByIdTarefa(idTarefa);
+		log.info("[finish] TarefaRepositoryMongoDB - buscaTarefaPorId");
+		return tarefaPorId;
+	}
 
 	@Override
 	public Tarefa salva(Tarefa tarefa) {
@@ -26,11 +49,7 @@ public class TarefaRepositoryMongoDB implements TarefaRepository {
 	}
 
 	@Override
-	public Tarefa buscaTarefaPorId(UUID idTarefa) {
-		log.info("[inicia] TarefaRepositoryMongoDB - buscaTarefaPorId");
-		Tarefa tarefa = tarefaMongoDBSpringRepository.findById(idTarefa)
-				.orElseThrow(() -> APIException.build(HttpStatus.NOT_FOUND, "Tarefa não encontrada!"));
-		log.info("[finaliza] TarefaRepositoryMongoDB - buscaTarefaPorId");
-		return tarefa;
+	public void deleteById(Tarefa tarefaPorId) {
+		tarefaMongoDBSpringRepository.delete(tarefaPorId);
 	}
 }

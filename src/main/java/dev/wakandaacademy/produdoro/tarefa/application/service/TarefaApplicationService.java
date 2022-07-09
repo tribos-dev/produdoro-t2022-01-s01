@@ -1,13 +1,19 @@
 package dev.wakandaacademy.produdoro.tarefa.application.service;
 
-import java.util.UUID;
-
-import org.springframework.stereotype.Service;
-
 import dev.wakandaacademy.produdoro.tarefa.domain.Tarefa;
 
-@Service
+import javax.validation.Valid;
+import java.util.UUID;
+
 public interface TarefaApplicationService {
-	Tarefa adicionaTarefa(Tarefa tarefa);
-	Tarefa detalhaTarefa(UUID idTarefa);
+    void ativaTarefa(@Valid UUID idUsuario, @Valid UUID idTarefa);
+
+    Tarefa buscaTarefaPoridTarefa(@Valid UUID idTarefa);
+
+    void deletaTarefa(UUID idTarefa);
+
+    Tarefa adicionaTarefa(Tarefa tarefa);
+
+    Tarefa detalhaTarefa(UUID idTarefa);
 }
+

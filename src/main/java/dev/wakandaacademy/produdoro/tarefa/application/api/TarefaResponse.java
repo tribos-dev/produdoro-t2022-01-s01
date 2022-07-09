@@ -1,10 +1,8 @@
 package dev.wakandaacademy.produdoro.tarefa.application.api;
-
 import java.util.UUID;
 import dev.wakandaacademy.produdoro.tarefa.domain.StatusTarefa;
 import dev.wakandaacademy.produdoro.tarefa.domain.Tarefa;
 import lombok.Getter;
-
 @Getter
 public class TarefaResponse {
 	private UUID idTarefa;
