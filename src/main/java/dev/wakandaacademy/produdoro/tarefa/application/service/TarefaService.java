@@ -1,5 +1,8 @@
 package dev.wakandaacademy.produdoro.tarefa.application.service;
 import java.util.UUID;
+
+import dev.wakandaacademy.produdoro.handler.FalhaAoProcessarSalvaTarefaExecption;
+import lombok.SneakyThrows;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import dev.wakandaacademy.produdoro.handler.APIException;
@@ -11,6 +14,7 @@ import lombok.extern.log4j.Log4j2;
 @AllArgsConstructor
 @Service
 public class TarefaService implements TarefaApplicationService {
+
 	private TarefaRepository tarefaRepository;
 
 	public void ativaTarefa(UUID idUsuario, UUID idTarefa) {
@@ -22,6 +26,7 @@ public class TarefaService implements TarefaApplicationService {
 		tarefaRepository.salva(tarefaPorId);
 		log.info("[finish] TarefaService - ativaTarefa");
 	}
+
 	@Override
 	public Tarefa buscaTarefaPoridTarefa(UUID idTarefa) {
 		log.info("[start] TarefaService - buscaTarefaPoridTarefa");
@@ -30,9 +35,19 @@ public class TarefaService implements TarefaApplicationService {
 		log.info("[finish] TarefaService - buscaTarefaPoridTarefa");
 		return buscaTarefa;
 	}
+
+	@SneakyThrows
 	public Tarefa adicionaTarefa(Tarefa tarefa) {
 		log.info("[inicia] TarefaService - adicionaTarefa");
-		Tarefa salvaTarefa = tarefaRepository.salva(tarefa);
+		Tarefa salvaTarefa;
+
+		try {
+			tarefa.setContagemPomodoro(tarefa.getStatus().tempoPomodoro());
+			salvaTarefa = tarefaRepository.salva(tarefa);
+		} catch (FalhaAoProcessarSalvaTarefaExecption e) {
+			throw new FalhaAoProcessarSalvaTarefaExecption();
+		}
+
 		log.info("[finaliza] TarefaService - adicionaTarefa");
 		return salvaTarefa;
 	}
