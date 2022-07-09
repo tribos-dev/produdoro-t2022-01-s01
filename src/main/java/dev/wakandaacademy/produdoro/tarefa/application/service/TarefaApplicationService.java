@@ -10,8 +10,10 @@ public interface TarefaApplicationService {
 
     Tarefa buscaTarefaPoridTarefa(@Valid UUID idTarefa);
 
-    Tarefa adicionaTarefa(@Valid Tarefa tarefa);
-
     void deletaTarefa(UUID idTarefa);
+
+    Tarefa adicionaTarefa(Tarefa tarefa);
+
+    Tarefa detalhaTarefa(UUID idTarefa);
 }
 

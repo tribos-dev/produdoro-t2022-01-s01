@@ -36,4 +36,12 @@ public class TarefaRestController implements TarefaAPI {
         tarefaApplicationService.deletaTarefa(idTarefa);
         log.info("[finish] TarefaRestController - deletaTarefa");
     }
+
+    @Override
+    public TarefaResponse detalhaTarefa(UUID idTarefa) {
+        log.info("[inicia] TarefaRestController - detalhaTarefa");
+        Tarefa tarefa = tarefaApplicationService.detalhaTarefa(idTarefa);
+        log.info("[finaliza] TarefaRestController - detalhaTarefa");
+        return new TarefaResponse(tarefa);
+    }
 }

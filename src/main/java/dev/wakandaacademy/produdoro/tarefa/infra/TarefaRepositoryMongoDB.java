@@ -1,15 +1,17 @@
 package dev.wakandaacademy.produdoro.tarefa.infra;
-import java.util.Optional;
-import java.util.UUID;
+
+import dev.wakandaacademy.produdoro.tarefa.application.repository.TarefaRepository;
+import dev.wakandaacademy.produdoro.tarefa.domain.Tarefa;
+import lombok.AllArgsConstructor;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Repository;
-import dev.wakandaacademy.produdoro.tarefa.application.repository.TarefaRepository;
-import dev.wakandaacademy.produdoro.tarefa.domain.Tarefa;
-import lombok.AllArgsConstructor;
-import lombok.extern.log4j.Log4j2;
+
+import java.util.Optional;
+import java.util.UUID;
 
 @Log4j2
 @AllArgsConstructor

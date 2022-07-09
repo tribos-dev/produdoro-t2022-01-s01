@@ -10,4 +10,6 @@ public interface TarefaMongoDBSpringRepository extends MongoRepository<Tarefa, U
     Optional<Tarefa> findByIdTarefa(UUID idTarefa);
 
     void delete(Tarefa tarefaPorId);
+
+    Optional<Tarefa> findById(UUID idTarefa);
 }
