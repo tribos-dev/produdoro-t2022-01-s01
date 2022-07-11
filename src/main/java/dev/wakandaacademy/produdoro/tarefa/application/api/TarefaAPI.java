@@ -26,6 +26,7 @@ public interface TarefaAPI {
 	@ResponseStatus(code = HttpStatus.OK)
 	TarefaResponse detalhaTarefa(@PathVariable UUID idTarefa);
 
+    @GetMapping("/{idUsuario}")
     @ResponseStatus(code = HttpStatus.OK)
     List<TarefaDTO> listaTarefasPorIdUsuario(@PathVariable UUID idUsuario);
 
