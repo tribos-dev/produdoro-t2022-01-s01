@@ -4,6 +4,8 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+import dev.wakandaacademy.produdoro.tarefa.domain.StatusAtivacaoTarefa;
 import dev.wakandaacademy.produdoro.tarefa.domain.StatusTarefa;
 import dev.wakandaacademy.produdoro.tarefa.domain.Tarefa;
 import lombok.Builder;
@@ -21,6 +23,7 @@ public class TarefaRequest {
 	private UUID idArea;
 	private UUID idProjeto;
 	private StatusTarefa status;
+	private StatusAtivacaoTarefa statusAtivacao;
 	@Min(1)
 	private int contagemPomodoro;
 	
