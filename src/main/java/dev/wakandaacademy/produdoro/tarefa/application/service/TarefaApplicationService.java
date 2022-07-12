@@ -1,15 +1,12 @@
 package dev.wakandaacademy.produdoro.tarefa.application.service;
 
-import dev.wakandaacademy.produdoro.tarefa.domain.Tarefa;
-
-import javax.validation.Valid;
 import java.util.List;
 import java.util.UUID;
 
-public interface TarefaApplicationService {
-    void ativaTarefa(@Valid UUID idUsuario, @Valid UUID idTarefa);
+import dev.wakandaacademy.produdoro.tarefa.domain.Tarefa;
 
-    Tarefa buscaTarefaPoridTarefa(@Valid UUID idTarefa);
+public interface TarefaApplicationService {
+    void ativaTarefa(UUID idUsuario, UUID idTarefa);
 
     void deletaTarefa(UUID idTarefa);
 
@@ -17,7 +14,6 @@ public interface TarefaApplicationService {
 
     Tarefa detalhaTarefa(UUID idTarefa);
 
-    List<Tarefa> buscarTarefasPorIdUsuario(@Valid UUID idUsuario);
-
+    List<Tarefa> buscarTarefasPorIdUsuario(UUID idUsuario);
 }
 
