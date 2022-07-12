@@ -1,14 +1,16 @@
 package dev.wakandaacademy.produdoro.tarefa.application.api;
 
+import java.util.List;
+import java.util.UUID;
+
+import javax.validation.Valid;
+
+import org.springframework.web.bind.annotation.RestController;
+
 import dev.wakandaacademy.produdoro.tarefa.application.service.TarefaApplicationService;
 import dev.wakandaacademy.produdoro.tarefa.domain.Tarefa;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
-import org.springframework.web.bind.annotation.RestController;
-
-import javax.validation.Valid;
-import java.util.List;
-import java.util.UUID;
 
 @Log4j2
 @RestController
@@ -24,7 +26,7 @@ public class TarefaRestController implements TarefaAPI {
     }
 
     @Override
-    public TarefaResponse adicionaTarefa(@Valid TarefaRequest tarefaRequest) {
+    public TarefaResponse adicionaTarefa(TarefaRequest tarefaRequest) {
         log.info("[inicia] TarefaRestController - adicionaTarefa");
         Tarefa novaTarefa = tarefaApplicationService.adicionaTarefa(tarefaRequest.toEntity());
         log.info("[finaliza] TarefaRestController - adicionaTarefa");
